@@ -1,7 +1,7 @@
-import { db } from "@dokploy/server/db";
-import { notifications } from "@dokploy/server/db/schema";
-import BuildSuccessEmail from "@dokploy/server/emails/emails/build-success";
-import type { Domain } from "@dokploy/server/services/domain";
+import { db } from "@LayerRail Deploy/server/db";
+import { notifications } from "@LayerRail Deploy/server/db/schema";
+import BuildSuccessEmail from "@LayerRail Deploy/server/emails/emails/build-success";
+import type { Domain } from "@LayerRail Deploy/server/services/domain";
 import { renderAsync } from "@react-email/components";
 import { format } from "date-fns";
 import { and, eq } from "drizzle-orm";
@@ -93,7 +93,7 @@ export const sendBuildSuccessNotifications = async ({
 				if (email) {
 					await sendEmailNotification(
 						email,
-						"Build success for dokploy",
+						"Build success for LayerRail Deploy",
 						template,
 					);
 				}
@@ -101,7 +101,7 @@ export const sendBuildSuccessNotifications = async ({
 				if (resend) {
 					await sendResendNotification(
 						resend,
-						"Build success for dokploy",
+						"Build success for LayerRail Deploy",
 						template,
 					);
 				}
@@ -157,7 +157,7 @@ export const sendBuildSuccessNotifications = async ({
 					],
 					timestamp: date.toISOString(),
 					footer: {
-						text: "Dokploy Build Notification",
+						text: "LayerRail Deploy Build Notification",
 					},
 				});
 			}
@@ -272,7 +272,7 @@ export const sendBuildSuccessNotifications = async ({
 				await sendMattermostNotification(mattermost, {
 					text: `**✅ Build Success**\n\n**Project:** ${projectName}\n**Application:** ${applicationName}\n**Type:** ${applicationType}\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}\n\n[View Build Details](${buildLink})`,
 					channel: mattermost.channel,
-					username: mattermost.username || "Dokploy",
+					username: mattermost.username || "LayerRail Deploy",
 				});
 			}
 

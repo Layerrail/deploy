@@ -23,14 +23,14 @@ import {
 	stopService,
 	stopServiceRemote,
 	updatePostgresById,
-} from "@dokploy/server";
-import { db } from "@dokploy/server/db";
+} from "@LayerRail Deploy/server";
+import { db } from "@LayerRail Deploy/server/db";
 import {
 	addNewService,
 	checkServiceAccess,
 	checkServicePermissionAndAccess,
 	findMemberByUserId,
-} from "@dokploy/server/services/permission";
+} from "@LayerRail Deploy/server/services/permission";
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, ilike, or, sql } from "drizzle-orm";
 import { z } from "zod";

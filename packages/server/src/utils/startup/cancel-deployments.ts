@@ -1,4 +1,4 @@
-import { applications, compose, deployments } from "@dokploy/server/db/schema";
+import { applications, compose, deployments } from "@LayerRail Deploy/server/db/schema";
 import { eq, inArray } from "drizzle-orm";
 import { db } from "../../db/index";
 

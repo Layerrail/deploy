@@ -1,4 +1,4 @@
-import { paths } from "@dokploy/server/constants";
+import { paths } from "@LayerRail Deploy/server/constants";
 import { relations, sql } from "drizzle-orm";
 import {
 	boolean,

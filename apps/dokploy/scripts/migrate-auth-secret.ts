@@ -1,15 +1,15 @@
 /**
- * Use this command to automatically migrate the auth secret: curl -sSL https://dokploy.com/security/0.29.3.sh | bash
+ * Use this command to automatically migrate the auth secret: curl -sSL https://LayerRail Deploy.com/security/0.29.3.sh | bash
  * Migration script: re-encrypt 2FA secrets after rotating BETTER_AUTH_SECRET.
  *
  * Usage:
- *   OLD_SECRET=<old_secret> NEW_SECRET=<new_secret> npx tsx apps/dokploy/scripts/migrate-auth-secret.ts
+ *   OLD_SECRET=<old_secret> NEW_SECRET=<new_secret> npx tsx apps/LayerRail Deploy/scripts/migrate-auth-secret.ts
  *
  * Both OLD_SECRET and NEW_SECRET are required.
- * Run this BEFORE restarting Dokploy with the new secret.
+ * Run this BEFORE restarting LayerRail Deploy with the new secret.
  */
-import { db } from "@dokploy/server/db";
-import { twoFactor } from "@dokploy/server/db/schema";
+import { db } from "@LayerRail Deploy/server/db";
+import { twoFactor } from "@LayerRail Deploy/server/db/schema";
 import { symmetricDecrypt, symmetricEncrypt } from "better-auth/crypto";
 import { eq } from "drizzle-orm";
 
@@ -21,7 +21,7 @@ if (!OLD_SECRET || !NEW_SECRET) {
 		"❌ OLD_SECRET and NEW_SECRET environment variables are required.",
 	);
 	console.error(
-		"   Usage: OLD_SECRET=<old> NEW_SECRET=<new> npx tsx apps/dokploy/scripts/migrate-auth-secret.ts",
+		"   Usage: OLD_SECRET=<old> NEW_SECRET=<new> npx tsx apps/LayerRail Deploy/scripts/migrate-auth-secret.ts",
 	);
 	process.exit(1);
 }

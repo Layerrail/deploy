@@ -1,8 +1,8 @@
-import { IS_CLOUD } from "@dokploy/server";
+import { IS_CLOUD } from "@LayerRail Deploy/server";
 import {
 	execAsync,
 	execAsyncRemote,
-} from "@dokploy/server/utils/process/execAsync";
+} from "@LayerRail Deploy/server/utils/process/execAsync";
 import { resolveBuildsConcurrency } from "./concurrency";
 import { processDeploymentJob } from "./deployments-queue";
 import { type InMemoryJob, InMemoryQueue } from "./in-memory-queue";
@@ -62,16 +62,16 @@ const createInMemoryQueue = (): DeploymentQueue => {
 // (relative import in server.ts vs `@/` alias in the routers); without this the
 // worker and the `add()` calls would land on different queue instances.
 const globalForQueue = globalThis as unknown as {
-	__dokployDeploymentQueue?: DeploymentQueue;
+	__LayerRail DeployDeploymentQueue?: DeploymentQueue;
 };
 
-if (!globalForQueue.__dokployDeploymentQueue) {
-	globalForQueue.__dokployDeploymentQueue = !IS_CLOUD
+if (!globalForQueue.__LayerRail DeployDeploymentQueue) {
+	globalForQueue.__LayerRail DeployDeploymentQueue = !IS_CLOUD
 		? createInMemoryQueue()
 		: createNoopQueue();
 }
 
-const myQueue: DeploymentQueue = globalForQueue.__dokployDeploymentQueue;
+const myQueue: DeploymentQueue = globalForQueue.__LayerRail DeployDeploymentQueue;
 
 /** Start processing jobs. Called once on server startup (self-hosted). */
 export const startDeploymentWorker = () => myQueue.run();

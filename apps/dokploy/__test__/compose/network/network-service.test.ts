@@ -1,8 +1,8 @@
-import type { ComposeSpecification } from "@dokploy/server";
+import type { ComposeSpecification } from "@LayerRail Deploy/server";
 import {
 	addSuffixToServiceNetworks,
 	generateRandomHash,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import { expect, test } from "vitest";
 import { parse } from "yaml";
 
@@ -192,10 +192,10 @@ services:
   web:
     image: nginx:latest
     networks:
-      - dokploy-network
+      - LayerRail Deploy-network
 `;
 
-test("It shouldn't add suffix to dokploy-network in services", () => {
+test("It shouldn't add suffix to LayerRail Deploy-network in services", () => {
 	const composeData = parse(composeFile7) as ComposeSpecification;
 
 	const suffix = generateRandomHash();
@@ -207,7 +207,7 @@ test("It shouldn't add suffix to dokploy-network in services", () => {
 	const service = networks.web;
 
 	expect(service).toBeDefined();
-	expect(service?.networks).toContain("dokploy-network");
+	expect(service?.networks).toContain("LayerRail Deploy-network");
 });
 
 const composeFile8 = `
@@ -219,7 +219,7 @@ services:
     networks:
       - frontend
       - backend
-      - dokploy-network
+      - LayerRail Deploy-network
 
 
   api:
@@ -228,23 +228,23 @@ services:
       frontend:
         aliases:
           - api
-      dokploy-network:
+      LayerRail Deploy-network:
         aliases:
           - api
   redis:
     image: redis:alpine
     networks:
-      dokploy-network:
+      LayerRail Deploy-network:
   db:
     image: myapi:latest
     networks:
-      dokploy-network:
+      LayerRail Deploy-network:
         aliases:
           - apid
 
 `;
 
-test("It shouldn't add suffix to dokploy-network in services multiples cases", () => {
+test("It shouldn't add suffix to LayerRail Deploy-network in services multiples cases", () => {
 	const composeData = parse(composeFile8) as ComposeSpecification;
 
 	const suffix = generateRandomHash();
@@ -267,9 +267,9 @@ test("It shouldn't add suffix to dokploy-network in services multiples cases", (
 	};
 
 	expect(service).toBeDefined();
-	expect(service?.networks).toContain("dokploy-network");
+	expect(service?.networks).toContain("LayerRail Deploy-network");
 
-	expect(redis?.networks).toHaveProperty("dokploy-network");
-	expect(dbNetworks["dokploy-network"]).toBeDefined();
-	expect(apiNetworks["dokploy-network"]).toBeDefined();
+	expect(redis?.networks).toHaveProperty("LayerRail Deploy-network");
+	expect(dbNetworks["LayerRail Deploy-network"]).toBeDefined();
+	expect(apiNetworks["LayerRail Deploy-network"]).toBeDefined();
 });

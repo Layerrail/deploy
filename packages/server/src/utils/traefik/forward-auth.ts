@@ -1,10 +1,10 @@
-import { db } from "@dokploy/server/db";
-import { forwardAuthSettings } from "@dokploy/server/db/schema";
-import type { Domain } from "@dokploy/server/services/domain";
+import { db } from "@LayerRail Deploy/server/db";
+import { forwardAuthSettings } from "@LayerRail Deploy/server/db/schema";
+import type { Domain } from "@LayerRail Deploy/server/services/domain";
 import {
 	FORWARD_AUTH_PORT,
 	FORWARD_AUTH_SERVICE_NAME,
-} from "@dokploy/server/setup/forward-auth-setup";
+} from "@LayerRail Deploy/server/setup/forward-auth-setup";
 import { eq, isNull } from "drizzle-orm";
 import type { ApplicationNested } from "../builders";
 import {

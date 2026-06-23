@@ -1,4 +1,4 @@
-import { safeDockerLoginCommand } from "@dokploy/server/services/registry";
+import { safeDockerLoginCommand } from "@LayerRail Deploy/server/services/registry";
 import type { ApplicationNested } from "../builders";
 
 export const buildRemoteDocker = async (application: ApplicationNested) => {

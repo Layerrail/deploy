@@ -1,4 +1,4 @@
-import { validateRequest } from "@dokploy/server/lib/auth";
+import { validateRequest } from "@LayerRail Deploy/server/lib/auth";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import dynamic from "next/dynamic";
@@ -9,10 +9,10 @@ import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { appRouter } from "@/server/api/root";
 import { api } from "@/utils/api";
 
-const ShowWelcomeDokploy = dynamic(
+const ShowWelcomeLayerRail Deploy = dynamic(
 	() =>
-		import("@/components/dashboard/settings/billing/show-welcome-dokploy").then(
-			(mod) => mod.ShowWelcomeDokploy,
+		import("@/components/dashboard/settings/billing/show-welcome-LayerRail Deploy").then(
+			(mod) => mod.ShowWelcomeLayerRail Deploy,
 		),
 	{ ssr: false },
 );
@@ -21,7 +21,7 @@ const Dashboard = () => {
 	const { data: isCloud } = api.settings.isCloud.useQuery();
 	return (
 		<>
-			{isCloud && <ShowWelcomeDokploy />}
+			{isCloud && <ShowWelcomeLayerRail Deploy />}
 
 			<ShowProjects />
 		</>

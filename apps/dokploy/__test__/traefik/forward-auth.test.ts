@@ -1,4 +1,4 @@
-import type { ApplicationNested, Domain } from "@dokploy/server";
+import type { ApplicationNested, Domain } from "@LayerRail Deploy/server";
 import {
 	buildForwardAuthEnv,
 	createRouterConfig,
@@ -6,7 +6,7 @@ import {
 	deriveCookieSecret,
 	forwardAuthCallbackUrl,
 	forwardAuthMiddlewareName,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import { beforeAll, describe, expect, test } from "vitest";
 
 const app = {

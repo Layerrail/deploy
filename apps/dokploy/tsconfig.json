@@ -28,7 +28,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./*"],
-			"@dokploy/server/*": ["../../packages/server/src/*"]
+			"@LayerRail Deploy/server/*": ["../../packages/server/src/*"]
 		}
 	},
 	"include": [
@@ -43,7 +43,7 @@
 	],
 	"exclude": [
 		"node_modules",
-		"dokploy",
+		"LayerRail Deploy",
 		"config",
 		"dist",
 		"webpack.config.server.js",

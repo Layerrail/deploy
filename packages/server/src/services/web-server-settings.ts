@@ -1,5 +1,5 @@
-import { db } from "@dokploy/server/db";
-import { webServerSettings } from "@dokploy/server/db/schema";
+import { db } from "@LayerRail Deploy/server/db";
+import { webServerSettings } from "@LayerRail Deploy/server/db/schema";
 import { eq } from "drizzle-orm";
 
 /**

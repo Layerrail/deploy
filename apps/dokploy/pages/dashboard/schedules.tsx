@@ -1,4 +1,4 @@
-import { validateRequest } from "@dokploy/server/lib/auth";
+import { validateRequest } from "@LayerRail Deploy/server/lib/auth";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
 import { ShowSchedules } from "@/components/dashboard/application/schedules/show-schedules";
@@ -14,8 +14,8 @@ function SchedulesPage() {
 					<Card className="h-full bg-sidebar p-2.5 rounded-xl w-full min-h-[45vh]">
 						<div className="rounded-xl bg-background shadow-md h-full">
 							<ShowSchedules
-								scheduleType={serverId ? "server" : "dokploy-server"}
-								id={serverId ?? "dokploy-server"}
+								scheduleType={serverId ? "server" : "LayerRail Deploy-server"}
+								id={serverId ?? "LayerRail Deploy-server"}
 							/>
 						</div>
 					</Card>

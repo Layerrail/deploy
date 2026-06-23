@@ -19,7 +19,7 @@ export const CreateSSHKey = () => {
 	);
 
 	const cloudSSHKey = data?.find(
-		(sshKey) => sshKey.name === "dokploy-cloud-ssh-key",
+		(sshKey) => sshKey.name === "LayerRail Deploy-cloud-ssh-key",
 	);
 
 	useEffect(() => {
@@ -35,8 +35,8 @@ export const CreateSSHKey = () => {
 					type: "rsa",
 				});
 				await mutateAsync({
-					name: "dokploy-cloud-ssh-key",
-					description: "Used on Dokploy Cloud",
+					name: "LayerRail Deploy-cloud-ssh-key",
+					description: "Used on LayerRail Deploy Cloud",
 					privateKey: keys.privateKey,
 					publicKey: keys.publicKey,
 					organizationId: "",
@@ -172,7 +172,7 @@ export const CreateSSHKey = () => {
 											etc.)
 										</p>
 										<Link
-											href="https://docs.dokploy.com/docs/core/remote-servers/instructions#requirements"
+											href="https://docs.LayerRail Deploy.com/docs/core/remote-servers/instructions#requirements"
 											target="_blank"
 											className="text-primary flex flex-row gap-2 mt-2"
 										>

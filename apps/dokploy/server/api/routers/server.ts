@@ -15,9 +15,9 @@ import {
 	serverValidate,
 	setupMonitoring,
 	updateServerById,
-} from "@dokploy/server";
-import { db } from "@dokploy/server/db";
-import { hasValidLicense } from "@dokploy/server/services/proprietary/license-key";
+} from "@LayerRail Deploy/server";
+import { db } from "@LayerRail Deploy/server/db";
+import { hasValidLicense } from "@LayerRail Deploy/server/services/layerrail/license-key";
 import { TRPCError } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
 import { and, desc, eq, getTableColumns, isNotNull, sql } from "drizzle-orm";
@@ -296,7 +296,7 @@ export const serverRouter = createTRPCRouter({
 						enabled: boolean;
 						version: string;
 					};
-					isDokployNetworkInstalled: boolean;
+					isLayerRail DeployNetworkInstalled: boolean;
 					isSwarmInstalled: boolean;
 					isMainDirectoryInstalled: boolean;
 					privilegeMode: string;

@@ -1,24 +1,24 @@
-import { IS_CLOUD, removeScheduleJob, scheduleJob } from "@dokploy/server";
-import { db } from "@dokploy/server/db";
-import { deployments } from "@dokploy/server/db/schema/deployment";
+import { IS_CLOUD, removeScheduleJob, scheduleJob } from "@LayerRail Deploy/server";
+import { db } from "@LayerRail Deploy/server/db";
+import { deployments } from "@LayerRail Deploy/server/db/schema/deployment";
 import {
 	createScheduleSchema,
 	schedules,
 	updateScheduleSchema,
-} from "@dokploy/server/db/schema/schedule";
-import { runCommand } from "@dokploy/server/index";
+} from "@LayerRail Deploy/server/db/schema/schedule";
+import { runCommand } from "@LayerRail Deploy/server/index";
 import {
 	checkPermission,
 	checkServicePermissionAndAccess,
 	findMemberByUserId,
-} from "@dokploy/server/services/permission";
+} from "@LayerRail Deploy/server/services/permission";
 import {
 	createSchedule,
 	deleteSchedule,
 	findScheduleById,
 	updateSchedule,
-} from "@dokploy/server/services/schedule";
-import { findServerById } from "@dokploy/server/services/server";
+} from "@LayerRail Deploy/server/services/schedule";
+import { findServerById } from "@LayerRail Deploy/server/services/server";
 import { TRPCError } from "@trpc/server";
 import { asc, desc, eq } from "drizzle-orm";
 import { z } from "zod";
@@ -36,7 +36,7 @@ export const scheduleRouter = createTRPCRouter({
 					schedule: ["create"],
 				});
 			} else {
-				if (input.scheduleType === "dokploy-server" && IS_CLOUD) {
+				if (input.scheduleType === "LayerRail Deploy-server" && IS_CLOUD) {
 					throw new TRPCError({
 						code: "FORBIDDEN",
 						message:
@@ -48,7 +48,7 @@ export const scheduleRouter = createTRPCRouter({
 
 				if (
 					input.scheduleType === "server" ||
-					input.scheduleType === "dokploy-server"
+					input.scheduleType === "LayerRail Deploy-server"
 				) {
 					const member = await findMemberByUserId(
 						ctx.user.id,
@@ -77,7 +77,7 @@ export const scheduleRouter = createTRPCRouter({
 			}
 			const newSchedule = await createSchedule({
 				...input,
-				...(input.scheduleType === "dokploy-server" && {
+				...(input.scheduleType === "LayerRail Deploy-server" && {
 					organizationId: ctx.session.activeOrganizationId,
 				}),
 			});
@@ -126,7 +126,7 @@ export const scheduleRouter = createTRPCRouter({
 					schedule: ["update"],
 				});
 			} else {
-				if (existingSchedule.scheduleType === "dokploy-server" && IS_CLOUD) {
+				if (existingSchedule.scheduleType === "LayerRail Deploy-server" && IS_CLOUD) {
 					throw new TRPCError({
 						code: "FORBIDDEN",
 						message:
@@ -138,7 +138,7 @@ export const scheduleRouter = createTRPCRouter({
 
 				if (
 					existingSchedule.scheduleType === "server" ||
-					existingSchedule.scheduleType === "dokploy-server"
+					existingSchedule.scheduleType === "LayerRail Deploy-server"
 				) {
 					const member = await findMemberByUserId(
 						ctx.user.id,
@@ -212,7 +212,7 @@ export const scheduleRouter = createTRPCRouter({
 					schedule: ["delete"],
 				});
 			} else {
-				if (scheduleItem.scheduleType === "dokploy-server" && IS_CLOUD) {
+				if (scheduleItem.scheduleType === "LayerRail Deploy-server" && IS_CLOUD) {
 					throw new TRPCError({
 						code: "FORBIDDEN",
 						message:
@@ -224,7 +224,7 @@ export const scheduleRouter = createTRPCRouter({
 
 				if (
 					scheduleItem.scheduleType === "server" ||
-					scheduleItem.scheduleType === "dokploy-server"
+					scheduleItem.scheduleType === "LayerRail Deploy-server"
 				) {
 					const member = await findMemberByUserId(
 						ctx.user.id,
@@ -279,7 +279,7 @@ export const scheduleRouter = createTRPCRouter({
 					"application",
 					"compose",
 					"server",
-					"dokploy-server",
+					"LayerRail Deploy-server",
 				]),
 			}),
 		)
@@ -306,7 +306,7 @@ export const scheduleRouter = createTRPCRouter({
 					}
 				}
 
-				if (input.scheduleType === "dokploy-server") {
+				if (input.scheduleType === "LayerRail Deploy-server") {
 					const member = await findMemberByUserId(
 						ctx.user.id,
 						ctx.session.activeOrganizationId,
@@ -323,7 +323,7 @@ export const scheduleRouter = createTRPCRouter({
 				application: eq(schedules.applicationId, input.id),
 				compose: eq(schedules.composeId, input.id),
 				server: eq(schedules.serverId, input.id),
-				"dokploy-server": eq(
+				"LayerRail Deploy-server": eq(
 					schedules.organizationId,
 					ctx.session.activeOrganizationId,
 				),
@@ -379,7 +379,7 @@ export const scheduleRouter = createTRPCRouter({
 					schedule: ["create"],
 				});
 			} else {
-				if (scheduleItem.scheduleType === "dokploy-server" && IS_CLOUD) {
+				if (scheduleItem.scheduleType === "LayerRail Deploy-server" && IS_CLOUD) {
 					throw new TRPCError({
 						code: "FORBIDDEN",
 						message:
@@ -391,7 +391,7 @@ export const scheduleRouter = createTRPCRouter({
 
 				if (
 					scheduleItem.scheduleType === "server" ||
-					scheduleItem.scheduleType === "dokploy-server"
+					scheduleItem.scheduleType === "LayerRail Deploy-server"
 				) {
 					const member = await findMemberByUserId(
 						ctx.user.id,

@@ -20,9 +20,9 @@ export type TemplateProps = {
 
 export const VerifyEmailTemplate = ({
 	userName = "User",
-	verificationUrl = "https://app.dokploy.com/verify",
+	verificationUrl = "https://app.LayerRail Deploy.com/verify",
 }: TemplateProps) => {
-	const previewText = "Verify your email address to get started with Dokploy";
+	const previewText = "Verify your email address to get started with LayerRail Deploy";
 	return (
 		<Html>
 			<Head />
@@ -43,10 +43,10 @@ export const VerifyEmailTemplate = ({
 						{/* Header */}
 						<Section className="bg-[#09090b] rounded-t-xl px-[40px] py-[32px] text-center">
 							<Img
-								src="https://raw.githubusercontent.com/Dokploy/website/refs/heads/main/apps/docs/public/logo-dokploy-blackpng.png"
+								src="https://raw.githubusercontent.com/LayerRail Deploy/website/refs/heads/main/apps/docs/public/logo-LayerRail Deploy-blackpng.png"
 								width="190"
 								height="120"
-								alt="Dokploy"
+								alt="LayerRail Deploy"
 								className="my-0 mx-auto"
 							/>
 						</Section>
@@ -57,7 +57,7 @@ export const VerifyEmailTemplate = ({
 								Verify Your Email
 							</Heading>
 							<Text className="text-[#71717a] text-[14px] leading-[22px] m-0 mb-[24px]">
-								Hello {userName}, thank you for signing up for Dokploy. Please
+								Hello {userName}, thank you for signing up for LayerRail Deploy. Please
 								verify your email address to activate your account.
 							</Text>
 
@@ -85,10 +85,10 @@ export const VerifyEmailTemplate = ({
 							<Text className="text-[#a1a1aa] text-[12px] leading-[18px] m-0">
 								This is an automated email from{" "}
 								<Link
-									href="https://dokploy.com"
+									href="https://LayerRail Deploy.com"
 									className="text-[#71717a] underline"
 								>
-									Dokploy Cloud
+									LayerRail Deploy Cloud
 								</Link>
 								. If you didn't create an account, you can safely ignore this
 								email.

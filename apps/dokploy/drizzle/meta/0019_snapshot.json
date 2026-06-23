@@ -2689,8 +2689,8 @@
           "notNull": true,
           "default": false
         },
-        "dokployRestart": {
-          "name": "dokployRestart",
+        "LayerRail DeployRestart": {
+          "name": "LayerRail DeployRestart",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,

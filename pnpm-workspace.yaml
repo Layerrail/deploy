@@ -1,6 +1,6 @@
 packages:
   - "apps/api"
-  - "apps/dokploy"
+  - "apps/LayerRail Deploy"
   - "apps/schedules"
   - "packages/server"
 

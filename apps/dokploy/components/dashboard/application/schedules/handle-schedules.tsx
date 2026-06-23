@@ -90,7 +90,7 @@ const formSchema = z
 			"application",
 			"compose",
 			"server",
-			"dokploy-server",
+			"LayerRail Deploy-server",
 		]),
 		script: z.string(),
 		timezone: z.string().optional(),
@@ -105,7 +105,7 @@ const formSchema = z
 		}
 
 		if (
-			(data.scheduleType === "dokploy-server" ||
+			(data.scheduleType === "LayerRail Deploy-server" ||
 				data.scheduleType === "server") &&
 			!data.script
 		) {
@@ -132,7 +132,7 @@ const formSchema = z
 interface Props {
 	id?: string;
 	scheduleId?: string;
-	scheduleType?: "application" | "compose" | "server" | "dokploy-server";
+	scheduleType?: "application" | "compose" | "server" | "LayerRail Deploy-server";
 }
 
 export const ScheduleFormField = ({
@@ -297,7 +297,7 @@ export const HandleSchedules = ({ id, scheduleId, scheduleType }: Props) => {
 			...(scheduleType === "server" && {
 				serverId: id || "",
 			}),
-			...(scheduleType === "dokploy-server" && {
+			...(scheduleType === "LayerRail Deploy-server" && {
 				userId: id || "",
 			}),
 		})
@@ -338,7 +338,7 @@ export const HandleSchedules = ({ id, scheduleId, scheduleType }: Props) => {
 			</DialogTrigger>
 			<DialogContent
 				className={cn(
-					scheduleTypeForm === "dokploy-server" || scheduleTypeForm === "server"
+					scheduleTypeForm === "LayerRail Deploy-server" || scheduleTypeForm === "server"
 						? "sm:max-w-2xl"
 						: "sm:max-w-lg",
 				)}
@@ -643,7 +643,7 @@ export const HandleSchedules = ({ id, scheduleId, scheduleType }: Props) => {
 							</>
 						)}
 
-						{(scheduleTypeForm === "dokploy-server" ||
+						{(scheduleTypeForm === "LayerRail Deploy-server" ||
 							scheduleTypeForm === "server") && (
 							<FormField
 								control={form.control}

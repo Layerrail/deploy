@@ -1,5 +1,5 @@
-import type { ComposeSpecification } from "@dokploy/server";
-import { addSuffixToAllVolumes } from "@dokploy/server";
+import type { ComposeSpecification } from "@LayerRail Deploy/server";
+import { addSuffixToAllVolumes } from "@LayerRail Deploy/server";
 import { expect, test } from "vitest";
 import { parse } from "yaml";
 

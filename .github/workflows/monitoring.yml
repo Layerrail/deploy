@@ -1,11 +1,11 @@
-name: Dokploy Monitoring Build
+name: LayerRail Deploy Monitoring Build
 
 on:
   push:
     branches: [main, canary]
 
 env:
-  IMAGE_NAME: dokploy/monitoring
+  IMAGE_NAME: LayerRail Deploy/monitoring
 
 jobs:
   docker-amd:

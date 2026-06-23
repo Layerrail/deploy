@@ -18,8 +18,8 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 	"github.com/shirou/gopsutil/v3/net"
 
-	"github.com/mauriciogm/dokploy/apps/monitoring/config"
-	"github.com/mauriciogm/dokploy/apps/monitoring/database"
+	"github.com/mauriciogm/LayerRail Deploy/apps/monitoring/config"
+	"github.com/mauriciogm/LayerRail Deploy/apps/monitoring/database"
 )
 
 type SystemMetrics struct {

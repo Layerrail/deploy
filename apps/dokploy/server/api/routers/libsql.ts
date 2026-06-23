@@ -18,12 +18,12 @@ import {
 	stopService,
 	stopServiceRemote,
 	updateLibsqlById,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import {
 	addNewService,
 	checkServiceAccess,
 	checkServicePermissionAndAccess,
-} from "@dokploy/server/services/permission";
+} from "@LayerRail Deploy/server/services/permission";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";

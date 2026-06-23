@@ -3,9 +3,9 @@ import fs from "node:fs";
 export const {
 	DATABASE_URL,
 	POSTGRES_PASSWORD_FILE,
-	POSTGRES_USER = "dokploy",
-	POSTGRES_DB = "dokploy",
-	POSTGRES_HOST = "dokploy-postgres",
+	POSTGRES_USER = "LayerRail Deploy",
+	POSTGRES_DB = "LayerRail Deploy",
+	POSTGRES_HOST = "LayerRail Deploy-postgres",
 	POSTGRES_PORT = "5432",
 } = process.env;
 
@@ -33,15 +33,15 @@ if (DATABASE_URL) {
 		This mode WILL BE REMOVED in a future release.
 		
 		Please migrate to Docker Secrets using POSTGRES_PASSWORD_FILE.
-		Please execute this command in your server: curl -sSL https://dokploy.com/security/0.26.6.sh | bash
+		Please execute this command in your server: curl -sSL https://LayerRail Deploy.com/security/0.26.6.sh | bash
 		`);
 	}
 
 	if (process.env.NODE_ENV === "production") {
 		dbUrl =
-			"postgres://dokploy:amukds4wi9001583845717ad2@dokploy-postgres:5432/dokploy";
+			"postgres://LayerRail Deploy:amukds4wi9001583845717ad2@LayerRail Deploy-postgres:5432/LayerRail Deploy";
 	} else {
 		dbUrl =
-			"postgres://dokploy:amukds4wi9001583845717ad2@localhost:5432/dokploy";
+			"postgres://LayerRail Deploy:amukds4wi9001583845717ad2@localhost:5432/LayerRail Deploy";
 	}
 }

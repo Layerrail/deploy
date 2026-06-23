@@ -1,10 +1,10 @@
-import type { ComposeSpecification } from "@dokploy/server";
+import type { ComposeSpecification } from "@LayerRail Deploy/server";
 import {
 	addSuffixToAllNetworks,
 	addSuffixToNetworksRoot,
 	addSuffixToServiceNetworks,
 	generateRandomHash,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import { expect, test } from "vitest";
 import { parse } from "yaml";
 
@@ -266,13 +266,13 @@ services:
         aliases:
           - app
       backend:
-      dokploy-network:
+      LayerRail Deploy-network:
 
   worker:
     image: worker:latest
     networks:
       - backend
-      - dokploy-network
+      - LayerRail Deploy-network
 
 networks:
   frontend:
@@ -284,7 +284,7 @@ networks:
     driver_opts:
       com.docker.network.bridge.enable_icc: "true"
 
-  dokploy-network:
+  LayerRail Deploy-network:
     driver: bridge
 
 `;
@@ -300,13 +300,13 @@ services:
         aliases:
           - app
       backend-testhash:
-      dokploy-network:
+      LayerRail Deploy-network:
 
   worker:
     image: worker:latest
     networks:
       - backend-testhash
-      - dokploy-network
+      - LayerRail Deploy-network
 
 networks:
   frontend-testhash:
@@ -318,14 +318,14 @@ networks:
     driver_opts:
       com.docker.network.bridge.enable_icc: "true"
   
-  dokploy-network:
+  LayerRail Deploy-network:
     driver: bridge
 
 
   
 `);
 
-test("Expect don't add suffix to dokploy-network in compose file with multiple services and complex network configurations", () => {
+test("Expect don't add suffix to LayerRail Deploy-network in compose file with multiple services and complex network configurations", () => {
 	const composeData = parse(composeFile4) as ComposeSpecification;
 
 	const suffix = "testhash";

@@ -5,7 +5,7 @@ const getWebServerSettings = vi.fn();
 const findFirstOrg = vi.fn();
 const findFirstServer = vi.fn();
 
-vi.mock("@dokploy/server/db", () => ({
+vi.mock("@LayerRail Deploy/server/db", () => ({
 	db: {
 		query: {
 			organization: {
@@ -18,16 +18,16 @@ vi.mock("@dokploy/server/db", () => ({
 	},
 }));
 
-vi.mock("@dokploy/server/db/schema", () => ({
+vi.mock("@LayerRail Deploy/server/db/schema", () => ({
 	organization: {},
 	server: {},
 }));
 
-vi.mock("@dokploy/server/services/proprietary/license-key", () => ({
+vi.mock("@LayerRail Deploy/server/services/layerrail/license-key", () => ({
 	hasValidLicense: (...args: unknown[]) => hasValidLicense(...args),
 }));
 
-vi.mock("@dokploy/server/services/web-server-settings", () => ({
+vi.mock("@LayerRail Deploy/server/services/web-server-settings", () => ({
 	getWebServerSettings: (...args: unknown[]) => getWebServerSettings(...args),
 }));
 

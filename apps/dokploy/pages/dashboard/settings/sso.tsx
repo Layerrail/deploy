@@ -1,4 +1,4 @@
-import { IS_CLOUD, validateRequest } from "@dokploy/server";
+import { IS_CLOUD, validateRequest } from "@LayerRail Deploy/server";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
@@ -6,9 +6,9 @@ import superjson from "superjson";
 import { ToggleEnforceSSO } from "@/components/dashboard/settings/servers/actions/toggle-enforce-sso";
 import { ToggleRemoteServersOnly } from "@/components/dashboard/settings/servers/actions/toggle-remote-servers-only";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
-import { EnterpriseFeatureGate } from "@/components/proprietary/enterprise-feature-gate";
-import { ForwardAuthServers } from "@/components/proprietary/sso/forward-auth-servers";
-import { SSOSettings } from "@/components/proprietary/sso/sso-settings";
+import { EnterpriseFeatureGate } from "@/components/layerrail/enterprise-feature-gate";
+import { ForwardAuthServers } from "@/components/layerrail/sso/forward-auth-servers";
+import { SSOSettings } from "@/components/layerrail/sso/sso-settings";
 import {
 	Card,
 	CardContent,
@@ -33,7 +33,7 @@ const Page = ({ isCloud }: Props) => {
 								lockedProps={{
 									title: "Enterprise SSO",
 									description:
-										"Single sign-on (SSO) with OIDC and SAML is part of Dokploy Enterprise. Add a valid license to configure it.",
+										"Single sign-on (SSO) with OIDC and SAML is part of LayerRail Deploy Enterprise. Add a valid license to configure it.",
 									ctaLabel: "Go to License",
 								}}
 							>
@@ -48,7 +48,7 @@ const Page = ({ isCloud }: Props) => {
 							lockedProps={{
 								title: "Application Authentication",
 								description:
-									"Protect deployed applications behind an OIDC SSO gate (oauth2-proxy). Part of Dokploy Enterprise.",
+									"Protect deployed applications behind an OIDC SSO gate (oauth2-proxy). Part of LayerRail Deploy Enterprise.",
 								ctaLabel: "Go to License",
 							}}
 						>
@@ -63,7 +63,7 @@ const Page = ({ isCloud }: Props) => {
 								lockedProps={{
 									title: "Self-hosted Restrictions",
 									description:
-										"Deployment and authentication restrictions are part of Dokploy Enterprise. Add a valid license to configure them.",
+										"Deployment and authentication restrictions are part of LayerRail Deploy Enterprise. Add a valid license to configure them.",
 									ctaLabel: "Go to License",
 								}}
 							>

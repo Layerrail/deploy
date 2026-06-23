@@ -1,5 +1,5 @@
-import type { ComposeSpecification } from "@dokploy/server";
-import { addSuffixToNetworksRoot, generateRandomHash } from "@dokploy/server";
+import type { ComposeSpecification } from "@LayerRail Deploy/server";
+import { addSuffixToNetworksRoot, generateRandomHash } from "@LayerRail Deploy/server";
 import { expect, test } from "vitest";
 import { parse } from "yaml";
 
@@ -286,13 +286,13 @@ services:
   web:
     image: nginx:latest
     networks:
-      - dokploy-network
+      - LayerRail Deploy-network
 
 networks:
-  dokploy-network:
+  LayerRail Deploy-network:
 `;
 
-test("It shouldn't add suffix to dokploy-network", () => {
+test("It shouldn't add suffix to LayerRail Deploy-network", () => {
 	const composeData = parse(composeFile7) as ComposeSpecification;
 
 	const suffix = generateRandomHash();
@@ -304,6 +304,6 @@ test("It shouldn't add suffix to dokploy-network", () => {
 
 	expect(networks).toBeDefined();
 	for (const networkKey of Object.keys(networks)) {
-		expect(networkKey).toContain("dokploy-network");
+		expect(networkKey).toContain("LayerRail Deploy-network");
 	}
 });

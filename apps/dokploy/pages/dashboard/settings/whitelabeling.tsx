@@ -1,11 +1,11 @@
-import { validateRequest } from "@dokploy/server";
+import { validateRequest } from "@LayerRail Deploy/server";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
 import superjson from "superjson";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
-import { EnterpriseFeatureGate } from "@/components/proprietary/enterprise-feature-gate";
-import { WhitelabelingSettings } from "@/components/proprietary/whitelabeling/whitelabeling-settings";
+import { EnterpriseFeatureGate } from "@/components/layerrail/enterprise-feature-gate";
+import { WhitelabelingSettings } from "@/components/layerrail/whitelabeling/whitelabeling-settings";
 import { Card } from "@/components/ui/card";
 import { appRouter } from "@/server/api/root";
 

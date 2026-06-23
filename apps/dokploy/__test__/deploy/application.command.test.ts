@@ -1,14 +1,14 @@
-import * as adminService from "@dokploy/server/services/admin";
-import * as applicationService from "@dokploy/server/services/application";
-import { deployApplication } from "@dokploy/server/services/application";
-import * as deploymentService from "@dokploy/server/services/deployment";
-import * as builders from "@dokploy/server/utils/builders";
-import * as notifications from "@dokploy/server/utils/notifications/build-success";
-import * as execProcess from "@dokploy/server/utils/process/execAsync";
-import * as gitProvider from "@dokploy/server/utils/providers/git";
+import * as adminService from "@LayerRail Deploy/server/services/admin";
+import * as applicationService from "@LayerRail Deploy/server/services/application";
+import { deployApplication } from "@LayerRail Deploy/server/services/application";
+import * as deploymentService from "@LayerRail Deploy/server/services/deployment";
+import * as builders from "@LayerRail Deploy/server/utils/builders";
+import * as notifications from "@LayerRail Deploy/server/utils/notifications/build-success";
+import * as execProcess from "@LayerRail Deploy/server/utils/process/execAsync";
+import * as gitProvider from "@LayerRail Deploy/server/utils/providers/git";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@dokploy/server/db", () => {
+vi.mock("@LayerRail Deploy/server/db", () => {
 	const createChainableMock = (): any => {
 		const chain = {
 			set: vi.fn(() => chain),
@@ -44,10 +44,10 @@ vi.mock("@dokploy/server/db", () => {
 	};
 });
 
-vi.mock("@dokploy/server/services/application", async () => {
+vi.mock("@LayerRail Deploy/server/services/application", async () => {
 	const actual = await vi.importActual<
-		typeof import("@dokploy/server/services/application")
-	>("@dokploy/server/services/application");
+		typeof import("@LayerRail Deploy/server/services/application")
+	>("@LayerRail Deploy/server/services/application");
 	return {
 		...actual,
 		findApplicationById: vi.fn(),
@@ -55,35 +55,35 @@ vi.mock("@dokploy/server/services/application", async () => {
 	};
 });
 
-vi.mock("@dokploy/server/services/admin", () => ({
-	getDokployUrl: vi.fn(),
+vi.mock("@LayerRail Deploy/server/services/admin", () => ({
+	getLayerRail DeployUrl: vi.fn(),
 }));
 
-vi.mock("@dokploy/server/services/deployment", () => ({
+vi.mock("@LayerRail Deploy/server/services/deployment", () => ({
 	createDeployment: vi.fn(),
 	updateDeploymentStatus: vi.fn(),
 	updateDeployment: vi.fn(),
 }));
 
-vi.mock("@dokploy/server/utils/providers/git", async () => {
+vi.mock("@LayerRail Deploy/server/utils/providers/git", async () => {
 	const actual = await vi.importActual<
-		typeof import("@dokploy/server/utils/providers/git")
-	>("@dokploy/server/utils/providers/git");
+		typeof import("@LayerRail Deploy/server/utils/providers/git")
+	>("@LayerRail Deploy/server/utils/providers/git");
 	return {
 		...actual,
 		getGitCommitInfo: vi.fn(),
 	};
 });
 
-vi.mock("@dokploy/server/utils/process/execAsync", () => ({
+vi.mock("@LayerRail Deploy/server/utils/process/execAsync", () => ({
 	execAsync: vi.fn(),
 	ExecError: class ExecError extends Error {},
 }));
 
-vi.mock("@dokploy/server/utils/builders", async () => {
+vi.mock("@LayerRail Deploy/server/utils/builders", async () => {
 	const actual = await vi.importActual<
-		typeof import("@dokploy/server/utils/builders")
-	>("@dokploy/server/utils/builders");
+		typeof import("@LayerRail Deploy/server/utils/builders")
+	>("@LayerRail Deploy/server/utils/builders");
 	return {
 		...actual,
 		mechanizeDockerContainer: vi.fn(),
@@ -91,27 +91,27 @@ vi.mock("@dokploy/server/utils/builders", async () => {
 	};
 });
 
-vi.mock("@dokploy/server/utils/notifications/build-success", () => ({
+vi.mock("@LayerRail Deploy/server/utils/notifications/build-success", () => ({
 	sendBuildSuccessNotifications: vi.fn(),
 }));
 
-vi.mock("@dokploy/server/utils/notifications/build-error", () => ({
+vi.mock("@LayerRail Deploy/server/utils/notifications/build-error", () => ({
 	sendBuildErrorNotifications: vi.fn(),
 }));
 
-vi.mock("@dokploy/server/services/rollbacks", () => ({
+vi.mock("@LayerRail Deploy/server/services/rollbacks", () => ({
 	createRollback: vi.fn(),
 }));
 
-import { db } from "@dokploy/server/db";
-import { cloneGitRepository } from "@dokploy/server/utils/providers/git";
+import { db } from "@LayerRail Deploy/server/db";
+import { cloneGitRepository } from "@LayerRail Deploy/server/utils/providers/git";
 
 const createMockApplication = (overrides = {}) => ({
 	applicationId: "test-app-id",
 	name: "Test App",
 	appName: "test-app",
 	sourceType: "git" as const,
-	customGitUrl: "https://github.com/Dokploy/examples.git",
+	customGitUrl: "https://github.com/LayerRail Deploy/examples.git",
 	customGitBranch: "main",
 	customGitSSHKeyId: null,
 	buildType: "nixpacks" as const,
@@ -149,7 +149,7 @@ describe("deployApplication - Command Generation Tests", () => {
 		vi.mocked(applicationService.findApplicationById).mockResolvedValue(
 			createMockApplication() as any,
 		);
-		vi.mocked(adminService.getDokployUrl).mockResolvedValue(
+		vi.mocked(adminService.getLayerRail DeployUrl).mockResolvedValue(
 			"http://localhost:3000",
 		);
 		vi.mocked(deploymentService.createDeployment).mockResolvedValue(
@@ -183,7 +183,7 @@ describe("deployApplication - Command Generation Tests", () => {
 		const command = await cloneGitRepository(app);
 		console.log(command);
 
-		expect(command).toContain("https://github.com/Dokploy/examples.git");
+		expect(command).toContain("https://github.com/LayerRail Deploy/examples.git");
 		expect(command).not.toContain("--recurse-submodules");
 		expect(command).toContain("--branch main");
 		expect(command).toContain("--depth 1");
@@ -195,7 +195,7 @@ describe("deployApplication - Command Generation Tests", () => {
 		const command = await cloneGitRepository(app);
 
 		expect(command).toContain("--recurse-submodules");
-		expect(command).toContain("https://github.com/Dokploy/examples.git");
+		expect(command).toContain("https://github.com/LayerRail Deploy/examples.git");
 	});
 
 	it("should verify nixpacks command is called with correct app", async () => {
@@ -211,7 +211,7 @@ describe("deployApplication - Command Generation Tests", () => {
 		expect(builders.getBuildCommand).toHaveBeenCalledWith(
 			expect.objectContaining({
 				buildType: "nixpacks",
-				customGitUrl: "https://github.com/Dokploy/examples.git",
+				customGitUrl: "https://github.com/LayerRail Deploy/examples.git",
 				buildPath: "/astro",
 			}),
 		);

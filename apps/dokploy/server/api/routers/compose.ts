@@ -31,21 +31,21 @@ import {
 	stopCompose,
 	updateCompose,
 	updateDeploymentStatus,
-} from "@dokploy/server";
-import { db } from "@dokploy/server/db";
-import { canEditDeployGitSource } from "@dokploy/server/services/git-provider";
+} from "@LayerRail Deploy/server";
+import { db } from "@LayerRail Deploy/server/db";
+import { canEditDeployGitSource } from "@LayerRail Deploy/server/services/git-provider";
 import {
 	addNewService,
 	checkServiceAccess,
 	checkServicePermissionAndAccess,
 	findMemberByUserId,
-} from "@dokploy/server/services/permission";
+} from "@LayerRail Deploy/server/services/permission";
 import {
 	type CompleteTemplate,
 	fetchTemplateFiles,
 	fetchTemplatesList,
-} from "@dokploy/server/templates/github";
-import { processTemplate } from "@dokploy/server/templates/processors";
+} from "@LayerRail Deploy/server/templates/github";
+import { processTemplate } from "@LayerRail Deploy/server/templates/processors";
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, ilike, or, sql } from "drizzle-orm";
 import _ from "lodash";

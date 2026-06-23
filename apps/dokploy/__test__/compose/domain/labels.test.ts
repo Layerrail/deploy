@@ -1,5 +1,5 @@
-import type { Domain } from "@dokploy/server";
-import { createDomainLabels } from "@dokploy/server";
+import type { Domain } from "@LayerRail Deploy/server";
+import { createDomainLabels } from "@LayerRail Deploy/server";
 import { describe, expect, it } from "vitest";
 
 describe("createDomainLabels", () => {

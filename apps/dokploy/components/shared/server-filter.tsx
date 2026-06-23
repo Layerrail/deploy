@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { api } from "@/utils/api";
 
-const DOKPLOY_SERVER = "dokploy-server";
+const LayerRail Deploy_SERVER = "LayerRail Deploy-server";
 
 interface Props {
 	children: (serverId?: string) => ReactNode;
@@ -39,7 +39,7 @@ export const ServerFilter = ({ children }: Props) => {
 	const selectedServer = servers?.find(
 		(server) => server.serverId === queryServerId,
 	);
-	// Cloud has no local Dokploy server, so fall back to the first remote server
+	// Cloud has no local LayerRail Deploy server, so fall back to the first remote server
 	const serverId = selectedServer
 		? selectedServer.serverId
 		: isCloud
@@ -51,7 +51,7 @@ export const ServerFilter = ({ children }: Props) => {
 		router.replace(
 			{
 				pathname: router.pathname,
-				query: value === DOKPLOY_SERVER ? query : { ...query, serverId: value },
+				query: value === LayerRail Deploy_SERVER ? query : { ...query, serverId: value },
 			},
 			undefined,
 			{ shallow: true },
@@ -110,7 +110,7 @@ export const ServerFilter = ({ children }: Props) => {
 						Viewing server
 					</Label>
 					<Select
-						value={serverId ?? DOKPLOY_SERVER}
+						value={serverId ?? LayerRail Deploy_SERVER}
 						onValueChange={setServerId}
 					>
 						<SelectTrigger id="server-filter" className="w-fit min-w-[220px]">
@@ -123,9 +123,9 @@ export const ServerFilter = ({ children }: Props) => {
 							<SelectGroup>
 								<SelectLabel>Servers</SelectLabel>
 								{!isCloud && (
-									<SelectItem value={DOKPLOY_SERVER}>
+									<SelectItem value={LayerRail Deploy_SERVER}>
 										<div className="flex items-center gap-2">
-											<span>Dokploy Server</span>
+											<span>LayerRail Deploy Server</span>
 											<Badge
 												variant="secondary"
 												className="text-[10px] px-1.5 py-0"
@@ -150,7 +150,7 @@ export const ServerFilter = ({ children }: Props) => {
 					</Select>
 				</div>
 			)}
-			<Fragment key={serverId ?? DOKPLOY_SERVER}>{children(serverId)}</Fragment>
+			<Fragment key={serverId ?? LayerRail Deploy_SERVER}>{children(serverId)}</Fragment>
 		</div>
 	);
 };

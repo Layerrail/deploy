@@ -3,26 +3,26 @@ import { docker } from "../constants";
 import { pullImage } from "../utils/docker/utils";
 export const initializePostgres = async () => {
 	const imageName = "postgres:16";
-	const containerName = "dokploy-postgres";
+	const containerName = "LayerRail Deploy-postgres";
 	const settings: CreateServiceOptions = {
 		Name: containerName,
 		TaskTemplate: {
 			ContainerSpec: {
 				Image: imageName,
 				Env: [
-					"POSTGRES_USER=dokploy",
-					"POSTGRES_DB=dokploy",
+					"POSTGRES_USER=LayerRail Deploy",
+					"POSTGRES_DB=LayerRail Deploy",
 					"POSTGRES_PASSWORD=amukds4wi9001583845717ad2",
 				],
 				Mounts: [
 					{
 						Type: "volume",
-						Source: "dokploy-postgres",
+						Source: "LayerRail Deploy-postgres",
 						Target: "/var/lib/postgresql/data",
 					},
 				],
 			},
-			Networks: [{ Target: "dokploy-network" }],
+			Networks: [{ Target: "LayerRail Deploy-network" }],
 			Placement: {
 				Constraints: ["node.role==manager"],
 			},

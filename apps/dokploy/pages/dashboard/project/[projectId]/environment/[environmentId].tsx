@@ -1,5 +1,5 @@
-import type { findEnvironmentById } from "@dokploy/server";
-import { validateRequest } from "@dokploy/server/lib/auth";
+import type { findEnvironmentById } from "@LayerRail Deploy/server";
+import { validateRequest } from "@LayerRail Deploy/server/lib/auth";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import {
 	Ban,
@@ -400,7 +400,7 @@ const EnvironmentPage = (
 			{ enabled: !!selectedTargetProject },
 		);
 	const { config: whitelabeling } = useWhitelabeling();
-	const appName = whitelabeling?.appName || "Dokploy";
+	const appName = whitelabeling?.appName || "LayerRail Deploy";
 
 	const emptyServices =
 		!currentEnvironment ||
@@ -974,7 +974,7 @@ const EnvironmentPage = (
 		return Array.from(servers.values());
 	}, [applications]);
 
-	// Check if there are services without a server (Dokploy server)
+	// Check if there are services without a server (LayerRail Deploy server)
 	const hasServicesWithoutServer = useMemo(() => {
 		if (!applications) return false;
 		return applications.some((service) => !service.serverId);
@@ -991,7 +991,7 @@ const EnvironmentPage = (
 				(selectedTypes.length === 0 || selectedTypes.includes(service.type)) &&
 				(selectedServerId === "" ||
 					selectedServerId === "all" ||
-					(selectedServerId === "dokploy-server" && !service.serverId) ||
+					(selectedServerId === "LayerRail Deploy-server" && !service.serverId) ||
 					service.serverId === selectedServerId),
 		);
 		return sortServices(filtered);
@@ -1575,10 +1575,10 @@ const EnvironmentPage = (
 												<SelectContent>
 													<SelectItem value="all">All servers</SelectItem>
 													{hasServicesWithoutServer && (
-														<SelectItem value="dokploy-server">
+														<SelectItem value="LayerRail Deploy-server">
 															<div className="flex items-center gap-2">
 																<ServerIcon className="size-4" />
-																<span>Dokploy server</span>
+																<span>LayerRail Deploy server</span>
 															</div>
 														</SelectItem>
 													)}

@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Readable } from "node:stream";
-import { docker, paths } from "@dokploy/server/constants";
-import type { Compose } from "@dokploy/server/services/compose";
+import { docker, paths } from "@LayerRail Deploy/server/constants";
+import type { Compose } from "@LayerRail Deploy/server/services/compose";
 import type { ContainerInfo, ResourceRequirements } from "dockerode";
 import { parse } from "dotenv";
 import { quote } from "shell-quote";
@@ -149,7 +149,7 @@ export const getContainerByName = (name: string): Promise<ContainerInfo> => {
 /**
  * Docker commands sent using this method are held in a hold when Docker is busy.
  *
- * https://github.com/Dokploy/dokploy/pull/3064
+ * https://github.com/LayerRail Deploy/LayerRail Deploy/pull/3064
  */
 export const dockerSafeExec = (exec: string) => `
 CHECK_INTERVAL=10
@@ -304,7 +304,7 @@ export const getDockerDiskUsage = async (): Promise<DockerDiskUsageItem[]> => {
 /**
  * Volume cleanup should always be performed manually by the user. The reason is that during automatic cleanup, a volume may be deleted due to a stopped container, which is a dangerous situation.
  *
- * https://github.com/Dokploy/dokploy/pull/3267
+ * https://github.com/LayerRail Deploy/LayerRail Deploy/pull/3267
  */
 const excludedCleanupAllCommands: (keyof typeof cleanupCommands)[] = [
 	"volumes",
@@ -616,7 +616,7 @@ export const generateConfigContainer = (
 					Networks: networkSwarm,
 				}
 			: {
-					Networks: [{ Target: "dokploy-network" }],
+					Networks: [{ Target: "LayerRail Deploy-network" }],
 				}),
 		...(endpointSpecSwarm && {
 			EndpointSpec: {
@@ -855,20 +855,20 @@ const getSwarmServiceContainerId = async (
 };
 
 export const checkPostgresHealth = async (): Promise<ServiceHealthStatus> => {
-	const serviceCheck = await checkSwarmServiceRunning("dokploy-postgres");
+	const serviceCheck = await checkSwarmServiceRunning("LayerRail Deploy-postgres");
 	if (serviceCheck.status === "unhealthy") {
 		return serviceCheck;
 	}
 
 	// Verify PostgreSQL actually accepts connections
-	const containerId = await getSwarmServiceContainerId("dokploy-postgres");
+	const containerId = await getSwarmServiceContainerId("LayerRail Deploy-postgres");
 	if (!containerId) {
 		return { status: "unhealthy", message: "Could not find running container" };
 	}
 
 	try {
 		const exec = await docker.getContainer(containerId).exec({
-			Cmd: ["pg_isready", "-U", "dokploy"],
+			Cmd: ["pg_isready", "-U", "LayerRail Deploy"],
 			AttachStdout: true,
 			AttachStderr: true,
 		});
@@ -901,13 +901,13 @@ export const checkPostgresHealth = async (): Promise<ServiceHealthStatus> => {
 };
 
 export const checkRedisHealth = async (): Promise<ServiceHealthStatus> => {
-	const serviceCheck = await checkSwarmServiceRunning("dokploy-redis");
+	const serviceCheck = await checkSwarmServiceRunning("LayerRail Deploy-redis");
 	if (serviceCheck.status === "unhealthy") {
 		return serviceCheck;
 	}
 
 	// Verify Redis actually responds to PING
-	const containerId = await getSwarmServiceContainerId("dokploy-redis");
+	const containerId = await getSwarmServiceContainerId("LayerRail Deploy-redis");
 	if (!containerId) {
 		return { status: "unhealthy", message: "Could not find running container" };
 	}
@@ -947,7 +947,7 @@ export const checkRedisHealth = async (): Promise<ServiceHealthStatus> => {
 export const checkTraefikHealth = async (): Promise<ServiceHealthStatus> => {
 	// Traefik can run as a standalone container or a swarm service
 	try {
-		const container = docker.getContainer("dokploy-traefik");
+		const container = docker.getContainer("LayerRail Deploy-traefik");
 		const info = await container.inspect();
 		if (!info.State.Running) {
 			return {
@@ -958,6 +958,6 @@ export const checkTraefikHealth = async (): Promise<ServiceHealthStatus> => {
 		return { status: "healthy" };
 	} catch {
 		// Not a standalone container, check as swarm service
-		return checkSwarmServiceRunning("dokploy-traefik");
+		return checkSwarmServiceRunning("LayerRail Deploy-traefik");
 	}
 };

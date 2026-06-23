@@ -1,4 +1,4 @@
-import { generatePassword } from "@dokploy/server/templates";
+import { generatePassword } from "@LayerRail Deploy/server/templates";
 import { faker } from "@faker-js/faker";
 import { customAlphabet } from "nanoid";
 

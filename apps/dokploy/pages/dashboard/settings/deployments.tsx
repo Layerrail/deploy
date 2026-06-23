@@ -1,4 +1,4 @@
-import { IS_CLOUD, validateRequest } from "@dokploy/server";
+import { IS_CLOUD, validateRequest } from "@LayerRail Deploy/server";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
@@ -43,7 +43,7 @@ const Page = () => {
 							</AlertBlock>
 							<div className="flex flex-col gap-2">
 								<p className="text-sm font-medium text-muted-foreground">
-									Dokploy Server
+									LayerRail Deploy Server
 								</p>
 								<BuildsConcurrency />
 							</div>

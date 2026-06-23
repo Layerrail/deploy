@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
 	canEditDeployGitSource,
 	getAccessibleGitProviderIds,
-} from "@dokploy/server/services/git-provider";
+} from "@LayerRail Deploy/server/services/git-provider";
 
 const mockDb = vi.hoisted(() => ({
 	query: {
@@ -16,10 +16,10 @@ const mockDb = vi.hoisted(() => ({
 	},
 }));
 
-vi.mock("@dokploy/server/db", () => ({ db: mockDb }));
+vi.mock("@LayerRail Deploy/server/db", () => ({ db: mockDb }));
 
 const mockHasValidLicense = vi.hoisted(() => vi.fn());
-vi.mock("@dokploy/server/services/proprietary/license-key", () => ({
+vi.mock("@LayerRail Deploy/server/services/layerrail/license-key", () => ({
 	hasValidLicense: mockHasValidLicense,
 }));
 

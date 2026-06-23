@@ -2,8 +2,8 @@ import {
 	getWebServerSettings,
 	IS_CLOUD,
 	isAdminPresent,
-} from "@dokploy/server";
-import { validateRequest } from "@dokploy/server/lib/auth";
+} from "@LayerRail Deploy/server";
+import { validateRequest } from "@LayerRail Deploy/server/lib/auth";
 import { standardSchemaResolver as zodResolver } from "@hookform/resolvers/standard-schema";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import type { GetServerSidePropsContext } from "next";
@@ -14,9 +14,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { OnboardingLayout } from "@/components/layouts/onboarding-layout";
-import { SignInWithGithub } from "@/components/proprietary/auth/sign-in-with-github";
-import { SignInWithGoogle } from "@/components/proprietary/auth/sign-in-with-google";
-import { SignInWithSSO } from "@/components/proprietary/sso/sign-in-with-sso";
+import { SignInWithGithub } from "@/components/layerrail/auth/sign-in-with-github";
+import { SignInWithGoogle } from "@/components/layerrail/auth/sign-in-with-google";
+import { SignInWithSSO } from "@/components/layerrail/sso/sign-in-with-sso";
 import { AlertBlock } from "@/components/shared/alert-block";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
@@ -390,7 +390,7 @@ export default function Home({ IS_CLOUD, enforceSSO }: Props) {
 						) : (
 							<Link
 								className="hover:underline text-muted-foreground"
-								href="https://docs.dokploy.com/docs/core/reset-password"
+								href="https://docs.LayerRail Deploy.com/docs/core/reset-password"
 								target="_blank"
 							>
 								Lost your password?

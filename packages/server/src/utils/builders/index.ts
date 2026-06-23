@@ -1,5 +1,5 @@
-import { findRegistryByIdWithCredentials } from "@dokploy/server/services/registry";
-import type { InferResultType } from "@dokploy/server/types/with";
+import { findRegistryByIdWithCredentials } from "@LayerRail Deploy/server/services/registry";
+import type { InferResultType } from "@LayerRail Deploy/server/types/with";
 import type { CreateServiceOptions } from "dockerode";
 import { getRegistryTag, uploadImageRemoteCommand } from "../cluster/upload";
 import {

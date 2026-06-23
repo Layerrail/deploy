@@ -1,5 +1,5 @@
-import type { ComposeSpecification } from "@dokploy/server";
-import { addSuffixToAllConfigs, generateRandomHash } from "@dokploy/server";
+import type { ComposeSpecification } from "@LayerRail Deploy/server";
+import { addSuffixToAllConfigs, generateRandomHash } from "@LayerRail Deploy/server";
 import { expect, test } from "vitest";
 import { parse } from "yaml";
 

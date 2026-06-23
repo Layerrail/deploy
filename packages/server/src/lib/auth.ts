@@ -15,7 +15,7 @@ import {
 	getTrustedProviders,
 	getUserByToken,
 } from "../services/admin";
-import { createAuditLog } from "../services/proprietary/audit-log";
+import { createAuditLog } from "../services/layerrail/audit-log";
 import {
 	getWebServerSettings,
 	updateWebServerSettings,
@@ -66,7 +66,7 @@ const { handler, api } = betterAuth({
 			allowDifferentEmails: true,
 		},
 	},
-	appName: "Dokploy",
+	appName: "LayerRail Deploy",
 	socialProviders: {
 		github: {
 			clientId: process.env.GITHUB_CLIENT_ID as string,
@@ -149,12 +149,12 @@ const { handler, api } = betterAuth({
 			create: {
 				before: async (_user, context) => {
 					if (!IS_CLOUD) {
-						const xDokployToken =
-							context?.request?.headers?.get("x-dokploy-token");
-						if (xDokployToken) {
+						const xLayerRail DeployToken =
+							context?.request?.headers?.get("x-LayerRail Deploy-token");
+						if (xLayerRail DeployToken) {
 							let invitation: Awaited<ReturnType<typeof getUserByToken>>;
 							try {
-								invitation = await getUserByToken(xDokployToken);
+								invitation = await getUserByToken(xLayerRail DeployToken);
 							} catch {
 								throw new APIError("BAD_REQUEST", {
 									message: "Invalid invitation token",

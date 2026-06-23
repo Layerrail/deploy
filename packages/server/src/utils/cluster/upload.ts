@@ -1,10 +1,10 @@
-import { findAllDeploymentsByApplicationId } from "@dokploy/server/services/deployment";
+import { findAllDeploymentsByApplicationId } from "@LayerRail Deploy/server/services/deployment";
 import {
 	findRegistryByIdWithCredentials,
 	safeDockerLoginCommand,
 	type Registry,
-} from "@dokploy/server/services/registry";
-import { createRollback } from "@dokploy/server/services/rollbacks";
+} from "@LayerRail Deploy/server/services/registry";
+import { createRollback } from "@LayerRail Deploy/server/services/rollbacks";
 import type { ApplicationNested } from "../builders";
 
 export const uploadImageRemoteCommand = async (

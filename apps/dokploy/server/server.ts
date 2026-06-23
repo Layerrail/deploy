@@ -10,9 +10,9 @@ import {
 	initializeNetwork,
 	initSchedules,
 	initVolumeBackupsCronJobs,
-	sendDokployRestartNotifications,
+	sendLayerRail DeployRestartNotifications,
 	setupDirectories,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import { config } from "dotenv";
 import next from "next";
 import packageInfo from "../package.json";
@@ -41,7 +41,7 @@ const app = next({ dev, turbopack: process.env.TURBOPACK === "1" });
 const handle = app.getRequestHandler();
 void app.prepare().then(async () => {
 	try {
-		console.log("Running DokployVersion: ", packageInfo.version);
+		console.log("Running LayerRail DeployVersion: ", packageInfo.version);
 		const server = http.createServer((req, res) => {
 			handle(req, res);
 		});
@@ -65,7 +65,7 @@ void app.prepare().then(async () => {
 			await initSchedules();
 			await initCancelDeployments();
 			await initVolumeBackupsCronJobs();
-			await sendDokployRestartNotifications();
+			await sendLayerRail DeployRestartNotifications();
 		}
 		await initEnterpriseBackupCronJobs();
 

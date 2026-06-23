@@ -118,7 +118,7 @@ export const HandleCertificate = ({ certificateId }: Props) => {
 				})
 			: createMutation.mutateAsync({
 					...basePayload,
-					serverId: data.serverId === "dokploy" ? undefined : data.serverId,
+					serverId: data.serverId === "LayerRail Deploy" ? undefined : data.serverId,
 					organizationId: "",
 				});
 
@@ -246,20 +246,20 @@ export const HandleCertificate = ({ certificateId }: Props) => {
 										<Select
 											onValueChange={field.onChange}
 											defaultValue={
-												field.value || (!isCloud ? "dokploy" : undefined)
+												field.value || (!isCloud ? "LayerRail Deploy" : undefined)
 											}
 										>
 											<SelectTrigger>
 												<SelectValue
-													placeholder={!isCloud ? "Dokploy" : "Select a Server"}
+													placeholder={!isCloud ? "LayerRail Deploy" : "Select a Server"}
 												/>
 											</SelectTrigger>
 											<SelectContent>
 												<SelectGroup>
 													{!isCloud && (
-														<SelectItem value="dokploy">
+														<SelectItem value="LayerRail Deploy">
 															<span className="flex items-center gap-2 justify-between w-full">
-																<span>Dokploy</span>
+																<span>LayerRail Deploy</span>
 																<span className="text-muted-foreground text-xs self-center">
 																	Default
 																</span>

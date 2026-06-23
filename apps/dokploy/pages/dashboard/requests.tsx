@@ -1,5 +1,5 @@
-import { IS_CLOUD } from "@dokploy/server/constants";
-import { validateRequest } from "@dokploy/server/lib/auth";
+import { IS_CLOUD } from "@LayerRail Deploy/server/constants";
+import { validateRequest } from "@LayerRail Deploy/server/lib/auth";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
 import { ShowRequests } from "@/components/dashboard/requests/show-requests";

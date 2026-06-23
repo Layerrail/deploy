@@ -1,6 +1,6 @@
-import { db } from "@dokploy/server/db";
-import { notifications } from "@dokploy/server/db/schema";
-import DokployRestartEmail from "@dokploy/server/emails/emails/dokploy-restart";
+import { db } from "@LayerRail Deploy/server/db";
+import { notifications } from "@LayerRail Deploy/server/db/schema";
+import LayerRail DeployRestartEmail from "@LayerRail Deploy/server/emails/emails/LayerRail Deploy-restart";
 import { renderAsync } from "@react-email/components";
 import { format } from "date-fns";
 import { eq } from "drizzle-orm";
@@ -19,12 +19,12 @@ import {
 	sendTelegramNotification,
 } from "./utils";
 
-export const sendDokployRestartNotifications = async () => {
+export const sendLayerRail DeployRestartNotifications = async () => {
 	try {
 		const date = new Date();
 		const unixDate = ~~(Number(date) / 1000);
 		const notificationList = await db.query.notifications.findMany({
-			where: eq(notifications.dokployRestart, true),
+			where: eq(notifications.LayerRail DeployRestart, true),
 			with: {
 				email: true,
 				discord: true,
@@ -60,13 +60,13 @@ export const sendDokployRestartNotifications = async () => {
 			try {
 				if (email || resend) {
 					const template = await renderAsync(
-						DokployRestartEmail({ date: date.toLocaleString() }),
+						LayerRail DeployRestartEmail({ date: date.toLocaleString() }),
 					).catch();
 
 					if (email) {
 						await sendEmailNotification(
 							email,
-							"Dokploy Server Restarted",
+							"LayerRail Deploy Server Restarted",
 							template,
 						);
 					}
@@ -74,7 +74,7 @@ export const sendDokployRestartNotifications = async () => {
 					if (resend) {
 						await sendResendNotification(
 							resend,
-							"Dokploy Server Restarted",
+							"LayerRail Deploy Server Restarted",
 							template,
 						);
 					}
@@ -85,7 +85,7 @@ export const sendDokployRestartNotifications = async () => {
 						`${discord.decoration ? decoration : ""} ${text}`.trim();
 
 					await sendDiscordNotification(discord, {
-						title: decorate(">", "`✅` Dokploy Server Restarted"),
+						title: decorate(">", "`✅` LayerRail Deploy Server Restarted"),
 						color: 0x57f287,
 						fields: [
 							{
@@ -106,7 +106,7 @@ export const sendDokployRestartNotifications = async () => {
 						],
 						timestamp: date.toISOString(),
 						footer: {
-							text: "Dokploy Restart Notification",
+							text: "LayerRail Deploy Restart Notification",
 						},
 					});
 				}
@@ -116,7 +116,7 @@ export const sendDokployRestartNotifications = async () => {
 						`${gotify.decoration ? decoration : ""} ${text}\n`;
 					await sendGotifyNotification(
 						gotify,
-						decorate("✅", "Dokploy Server Restarted"),
+						decorate("✅", "LayerRail Deploy Server Restarted"),
 						`${decorate("🕒", `Date: ${date.toLocaleString()}`)}`,
 					);
 				}
@@ -124,7 +124,7 @@ export const sendDokployRestartNotifications = async () => {
 				if (ntfy) {
 					await sendNtfyNotification(
 						ntfy,
-						"Dokploy Server Restarted",
+						"LayerRail Deploy Server Restarted",
 						"white_check_mark",
 						"",
 						`🕒Date: ${date.toLocaleString()}`,
@@ -134,7 +134,7 @@ export const sendDokployRestartNotifications = async () => {
 				if (telegram) {
 					await sendTelegramNotification(
 						telegram,
-						`<b>✅ Dokploy Server Restarted</b>\n\n<b>Date:</b> ${format(
+						`<b>✅ LayerRail Deploy Server Restarted</b>\n\n<b>Date:</b> ${format(
 							date,
 							"PP",
 						)}\n<b>Time:</b> ${format(date, "pp")}`,
@@ -148,7 +148,7 @@ export const sendDokployRestartNotifications = async () => {
 						attachments: [
 							{
 								color: "#00FF00",
-								pretext: ":white_check_mark: *Dokploy Server Restarted*",
+								pretext: ":white_check_mark: *LayerRail Deploy Server Restarted*",
 								fields: [
 									{
 										title: "Time",
@@ -163,21 +163,21 @@ export const sendDokployRestartNotifications = async () => {
 
 				if (mattermost) {
 					await sendMattermostNotification(mattermost, {
-						text: `**✅ Dokploy Server Restarted**\n\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}`,
+						text: `**✅ LayerRail Deploy Server Restarted**\n\n**Date:** ${format(date, "PP")}\n**Time:** ${format(date, "pp")}`,
 						channel: mattermost.channel,
-						username: mattermost.username || "Dokploy",
+						username: mattermost.username || "LayerRail Deploy",
 					});
 				}
 
 				if (custom) {
 					try {
 						await sendCustomNotification(custom, {
-							title: "Dokploy Server Restarted",
-							message: "Dokploy server has been restarted successfully",
+							title: "LayerRail Deploy Server Restarted",
+							message: "LayerRail Deploy server has been restarted successfully",
 							timestamp: date.toISOString(),
 							date: date.toLocaleString(),
 							status: "success",
-							type: "dokploy-restart",
+							type: "LayerRail Deploy-restart",
 						});
 					} catch (error) {
 						console.log(error);
@@ -204,7 +204,7 @@ export const sendDokployRestartNotifications = async () => {
 							header: {
 								title: {
 									tag: "plain_text",
-									content: "✅ Dokploy Server Restarted",
+									content: "✅ LayerRail Deploy Server Restarted",
 								},
 								subtitle: {
 									tag: "plain_text",
@@ -262,14 +262,14 @@ export const sendDokployRestartNotifications = async () => {
 				if (pushover) {
 					await sendPushoverNotification(
 						pushover,
-						"Dokploy Server Restarted",
+						"LayerRail Deploy Server Restarted",
 						`Date: ${date.toLocaleString()}`,
 					);
 				}
 
 				if (teams) {
 					await sendTeamsNotification(teams, {
-						title: "✅ Dokploy Server Restarted",
+						title: "✅ LayerRail Deploy Server Restarted",
 						facts: [
 							{ name: "Status", value: "Successful" },
 							{ name: "Restart Time", value: format(date, "PP pp") },
@@ -281,6 +281,6 @@ export const sendDokployRestartNotifications = async () => {
 			}
 		}
 	} catch (error) {
-		console.error("[Dokploy] Restart notifications failed:", error);
+		console.error("[LayerRail Deploy] Restart notifications failed:", error);
 	}
 };

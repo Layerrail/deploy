@@ -7,7 +7,7 @@ import {
 	IS_CLOUD,
 	recordAdvancedStats,
 	validateRequest,
-} from "@dokploy/server";
+} from "@LayerRail Deploy/server";
 import { WebSocketServer } from "ws";
 
 export const setupDockerStatsMonitoringSocketServer = (
@@ -57,8 +57,8 @@ export const setupDockerStatsMonitoringSocketServer = (
 		}
 		const intervalId = setInterval(async () => {
 			try {
-				// Special case: when monitoring "dokploy", get host system stats instead of container stats
-				if (appName === "dokploy") {
+				// Special case: when monitoring "LayerRail Deploy", get host system stats instead of container stats
+				if (appName === "LayerRail Deploy") {
 					const stat = await getHostSystemStats();
 
 					await recordAdvancedStats(stat, appName);

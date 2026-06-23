@@ -426,7 +426,7 @@ const MENU: Menu = {
 	help: [
 		{
 			name: "Documentation",
-			url: "https://docs.dokploy.com/docs/core",
+			url: "https://docs.LayerRail Deploy.com/docs/core",
 			icon: BookIcon,
 		},
 		{
@@ -902,7 +902,7 @@ export default function Page({ children }: Props) {
 	const pathname = usePathname();
 	const { data: auth } = api.user.get.useQuery();
 	const { data: permissions } = api.user.getPermissions.useQuery();
-	const { data: dokployVersion } = api.settings.getDokployVersion.useQuery();
+	const { data: LayerRail DeployVersion } = api.settings.getLayerRail DeployVersion.useQuery();
 	const { data: whitelabeling } = api.whitelabeling.get.useQuery(undefined, {
 		staleTime: 5 * 60 * 1000,
 		refetchOnWindowFocus: false,
@@ -1175,9 +1175,9 @@ export default function Page({ children }: Props) {
 								{whitelabeling.footerText}
 							</div>
 						)}
-						{dokployVersion && (
+						{LayerRail DeployVersion && (
 							<div className="px-3 text-xs text-muted-foreground text-center group-data-[collapsible=icon]:hidden">
-								Version {dokployVersion}
+								Version {LayerRail DeployVersion}
 							</div>
 						)}
 					</SidebarMenu>

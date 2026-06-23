@@ -1,4 +1,4 @@
-import { IS_CLOUD, isAdminPresent, validateRequest } from "@dokploy/server";
+import { IS_CLOUD, isAdminPresent, validateRequest } from "@LayerRail Deploy/server";
 import { standardSchemaResolver as zodResolver } from "@hookform/resolvers/standard-schema";
 import { AlertTriangle } from "lucide-react";
 import type { GetServerSidePropsContext } from "next";
@@ -9,8 +9,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { OnboardingLayout } from "@/components/layouts/onboarding-layout";
-import { SignInWithGithub } from "@/components/proprietary/auth/sign-in-with-github";
-import { SignInWithGoogle } from "@/components/proprietary/auth/sign-in-with-google";
+import { SignInWithGithub } from "@/components/layerrail/auth/sign-in-with-github";
+import { SignInWithGoogle } from "@/components/layerrail/auth/sign-in-with-google";
 import { AlertBlock } from "@/components/shared/alert-block";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
@@ -209,7 +209,7 @@ const Register = ({ isCloud }: Props) => {
 												<FormItem>
 													<FormLabel>Email</FormLabel>
 													<FormControl>
-														<Input placeholder="email@dokploy.com" {...field} />
+														<Input placeholder="email@LayerRail Deploy.com" {...field} />
 													</FormControl>
 													<FormMessage />
 												</FormItem>
@@ -275,7 +275,7 @@ const Register = ({ isCloud }: Props) => {
 									Need help?
 									<Link
 										className="underline"
-										href="https://dokploy.com"
+										href="https://LayerRail Deploy.com"
 										target="_blank"
 									>
 										Contact us

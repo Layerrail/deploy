@@ -1,14 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { ApplicationNested } from "@dokploy/server";
-import { unzipDrop } from "@dokploy/server";
-import { paths } from "@dokploy/server/constants";
+import type { ApplicationNested } from "@LayerRail Deploy/server";
+import { unzipDrop } from "@LayerRail Deploy/server";
+import { paths } from "@LayerRail Deploy/server/constants";
 import AdmZip from "adm-zip";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
 const OUTPUT_BASE = "./__test__/drop/zips/output";
 const { APPLICATIONS_PATH } = paths();
-vi.mock("@dokploy/server/constants", async (importOriginal) => {
+vi.mock("@LayerRail Deploy/server/constants", async (importOriginal) => {
 	const actual = await importOriginal();
 	return {
 		// @ts-ignore

@@ -1,10 +1,10 @@
-import { validateRequest } from "@dokploy/server";
+import { validateRequest } from "@LayerRail Deploy/server";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
 import superjson from "superjson";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
-import { LicenseKeySettings } from "@/components/proprietary/license-keys/license-key";
+import { LicenseKeySettings } from "@/components/layerrail/license-keys/license-key";
 import { Card } from "@/components/ui/card";
 import { appRouter } from "@/server/api/root";
 

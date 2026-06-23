@@ -1,6 +1,6 @@
-import { db } from "@dokploy/server/db";
-import { gitProvider, member } from "@dokploy/server/db/schema";
-import { hasValidLicense } from "@dokploy/server/services/proprietary/license-key";
+import { db } from "@LayerRail Deploy/server/db";
+import { gitProvider, member } from "@LayerRail Deploy/server/db/schema";
+import { hasValidLicense } from "@LayerRail Deploy/server/services/layerrail/license-key";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 

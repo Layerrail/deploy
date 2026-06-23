@@ -49,7 +49,7 @@ export const ShowTraefikSystem = ({ serverId }: Props) => {
 							Traefik File System
 						</CardTitle>
 						<CardDescription>
-							Manage all the files and directories in {"'/etc/dokploy/traefik'"}
+							Manage all the files and directories in {"'/etc/LayerRail Deploy/traefik'"}
 							.
 						</CardDescription>
 
@@ -86,7 +86,7 @@ export const ShowTraefikSystem = ({ serverId }: Props) => {
 											<span className="text-sm text-muted-foreground">
 												There are no directories or files in{" "}
 												<code className="bg-muted px-1.5 py-0.5 rounded text-xs">
-													/etc/dokploy/traefik
+													/etc/LayerRail Deploy/traefik
 												</code>{" "}
 												on this server yet.
 											</span>

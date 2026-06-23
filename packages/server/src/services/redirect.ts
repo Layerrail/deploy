@@ -1,10 +1,10 @@
-import { db } from "@dokploy/server/db";
-import { type apiCreateRedirect, redirects } from "@dokploy/server/db/schema";
+import { db } from "@LayerRail Deploy/server/db";
+import { type apiCreateRedirect, redirects } from "@LayerRail Deploy/server/db/schema";
 import {
 	createRedirectMiddleware,
 	removeRedirectMiddleware,
 	updateRedirectMiddleware,
-} from "@dokploy/server/utils/traefik/redirect";
+} from "@LayerRail Deploy/server/utils/traefik/redirect";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import type { z } from "zod";

@@ -1,4 +1,4 @@
-import { validateRequest } from "@dokploy/server";
+import { validateRequest } from "@LayerRail Deploy/server";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import type { ReactElement } from "react";
@@ -6,7 +6,7 @@ import superjson from "superjson";
 import { ShowInvitations } from "@/components/dashboard/settings/users/show-invitations";
 import { ShowUsers } from "@/components/dashboard/settings/users/show-users";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
-import { ManageCustomRoles } from "@/components/proprietary/roles/manage-custom-roles";
+import { ManageCustomRoles } from "@/components/layerrail/roles/manage-custom-roles";
 import { appRouter } from "@/server/api/root";
 import { api } from "@/utils/api";
 

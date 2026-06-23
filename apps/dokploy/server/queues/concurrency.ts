@@ -1,7 +1,7 @@
-import { db } from "@dokploy/server/db";
-import { organization, server } from "@dokploy/server/db/schema";
-import { hasValidLicense } from "@dokploy/server/services/proprietary/license-key";
-import { getWebServerSettings } from "@dokploy/server/services/web-server-settings";
+import { db } from "@LayerRail Deploy/server/db";
+import { organization, server } from "@LayerRail Deploy/server/db/schema";
+import { hasValidLicense } from "@LayerRail Deploy/server/services/layerrail/license-key";
+import { getWebServerSettings } from "@LayerRail Deploy/server/services/web-server-settings";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { LOCAL_PARTITION } from "./in-memory-queue";
@@ -15,7 +15,7 @@ import { LOCAL_PARTITION } from "./in-memory-queue";
  * back to sequential deployments instead of breaking anything.
  *
  * - `LOCAL_PARTITION` -> concurrency stored on the web server settings (the
- *   local Dokploy web server), gated by the owner organization's license.
+ *   local LayerRail Deploy web server), gated by the owner organization's license.
  * - any other partition -> concurrency stored on the matching `server` row,
  *   gated by that server's organization license.
  */
